@@ -1,0 +1,22 @@
+{
+  "name": "wx-touch-event",
+  "version": "1.0.0",
+  "description": "微信小程序 手势事件库",
+  "main": "./src/wx-touch-event.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qbright/wx-touch-event.git"
+  },
+  "keywords": [
+    "wx",
+    "wechat",
+    "event",
+    "touch"
+  ],
+  "author": "zqbright",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qbright/wx-touch-event/issues"
+  },
+  "homepage": "https://github.com/qbright/wx-touch-event#readme"
+}
