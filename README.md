@@ -24,7 +24,7 @@
 由于和微信小程序强绑定，因此需要在元素上面绑定好所有的事件，书写比较麻烦，因此建议对于原生支持的使用原生去解决，
 只有当需要 pinch，rotate,swipe 等特殊事件才使用这个事件库实现
 
-> 安装 `npm i wx-touch-event --save`
+> 安装 `npm i wx-touch-event --save` , 或者直接从 git 库 checkout 出来 
 
 绑定方法
 #### \*.wxml
