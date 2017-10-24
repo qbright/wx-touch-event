@@ -43,8 +43,8 @@ class WxTouchEvent {
     start(evt) {
         if (!evt.touches) return;
         this.now = Date.now();
-        this.x1 = evt.touches[0].pageX;
-        this.y1 = evt.touches[0].pageY;
+        this.x1 = evt.touches[0].pageX == null ? evt.touches[0].x : evt.touches[0].pageX;
+        this.y1 = evt.touches[0].pageY == null ? evt.touches[0].y : evt.touches[0].pageY;
         this.delta = this.now - (this.last || this.now);
         this.touchStart.dispatch(evt);
         if (this.preTapPosition.x !== null) {
@@ -58,7 +58,9 @@ class WxTouchEvent {
         if (len > 1) {
             this._cancelLongTap();
             this._cancelSingleTap();
-            let v = {x: evt.touches[1].pageX - this.x1, y: evt.touches[1].pageY - this.y1};
+            let otx = evt.touches[1].pageX == null ? evt.touches[1].x : evt.touches[1].pageX;
+            let oty = evt.touches[1].pageY == null ? evt.touches[1].y : evt.touches[1].pageY;
+            let v = { x: otx - this.x1, y: oty - this.y1};
             preV.x = v.x;
             preV.y = v.y;
             this.pinchStartLen = getLen(preV);
@@ -74,11 +76,13 @@ class WxTouchEvent {
         if (!evt.touches) return;
         let preV = this.preV,
             len = evt.touches.length,
-            currentX = evt.touches[0].pageX,
-            currentY = evt.touches[0].pageY;
+            currentX = evt.touches[0].pageX == null ? evt.touches[0].x : evt.touches[0].pageX,
+            currentY = evt.touches[0].pageY == null ? evt.touches[0].y : evt.touches[0].pageY;
         this.isDoubleTap = false;
         if (len > 1) {
-            let v = {x: evt.touches[1].pageX - currentX, y: evt.touches[1].pageY - currentY};
+            let otx = evt.touches[1].pageX == null ? evt.touches[1].x : evt.touches[1].pageX;
+            let oty = evt.touches[1].pageY == null ? evt.touches[1].y : evt.touches[1].pageY;
+            let v = { x: otx - currentX, y: oty - currentY};
 
             if (preV.x !== null) {
                 if (this.pinchStartLen > 0) {
